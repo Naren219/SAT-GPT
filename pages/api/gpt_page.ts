@@ -29,5 +29,5 @@ export default async function handler(
 
   const question = completion.data.choices[0].text;
   console.log(question);
-  res.status(200).json({ quote: question });
+  res.status(200).json({ question });
 }

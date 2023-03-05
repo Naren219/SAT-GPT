@@ -105,7 +105,7 @@ export default function Home() {
         if (!writingQuestion) {
           let beg = `You are an expert test-taker about to take the SAT. You will consider how the passage might be edited to correct errors in sentence structure, usage, or punctuation. Choose the answer to each question that most effectively improves the quality of writing in the passage or that makes the passage conform to the conventions of standard written English.\n\nPassage 1\n${prompt}\n`
           if (writingPrompt1) {
-            prompt = beg + `Change all instances of the word ${replace_word} with a synonym from the below choices that best maintains the flow of passage 1. Pay attention to the purpose of the passage and which synonym matches up most with it. If the word ${replace_word} is the best word in context, select "A". Output both a letter choice and an explanation of why:\nA) ${replace_word} \n${other_choices}\n`
+            prompt = beg + `Change all instances of the word ${replace_word} with a synonym from the below choices that best maintains the flow of passage 1. Pay attention to the purpose of the passage and which synonym matches up most with it. If the word ${replace_word} is the best word in context, select "A". Output both a letter choice and an explanation of why the other choices are not correct:\nA) ${replace_word} \n${other_choices}\n`
           } else if (writingPrompt2) {
             prompt = beg + `Choose an answer choice below (a, b, c, d) that best serves as a replacement to the word ${replace_word} in the passage and write the explanation for your chosen answer with and why the other choices are not right with specific english grammar reasoning using this format "choice [insert choice letter here] is not the right answer because ..."\nA) ${replace_word} \n${other_choices}\n`
           }
@@ -117,7 +117,8 @@ export default function Home() {
         }
         const response = await fetch("/api/gpt_page?prompt=" + encodeURIComponent(prompt));
         const body = await response.json();
-        
+        console.log(body);
+        console.log(body.question);
         setQuestion(body.question);
       } catch (error) {
         console.error(error);
