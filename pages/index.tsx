@@ -117,8 +117,7 @@ export default function Home() {
         }
         const response = await fetch("/api/gpt_page?prompt=" + encodeURIComponent(prompt));
         const body = await response.json();
-        console.log(body);
-        console.log(body.question);
+        
         setQuestion(body.question);
       } catch (error) {
         console.error(error);
