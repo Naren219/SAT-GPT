@@ -219,14 +219,14 @@ export default function Home() {
               <Form>
                 <Form.Check
                   type="radio"
-                  label="If your question is asking to replace an existing word using context, select this option."
+                  label={`If your question is asking to replace an existing word using context, select this option. i.e. underlined(satiated); a. NO CHANGE b. fulfill...`}
                   id="radio1"
                   name="writing-prompt"
                   onChange={handleWritingPrompt1}
                 />
                 <Form.Check
                   type="radio"
-                  label="If there is a grammatical error that you need to correct with a phrase, select this option."
+                  label="If there is a grammatical error that you need to correct with a phrase, select this option. i.e. underlined(to be); a. NO CHANGE b. as..."
                   id="radio2"
                   name="writing-prompt"
                   onChange={handleWritingPrompt2}
